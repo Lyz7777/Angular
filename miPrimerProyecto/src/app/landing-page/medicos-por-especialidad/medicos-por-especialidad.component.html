@@ -1,1 +1,166 @@
-<p>medicos-por-especialidad works!</p>
+
+  <!-- SECCIÓN 2: Doctores -->
+<div class="container-fluid mt-5" id="doctores">
+  <h1 class="mb-4">Doctores</h1>
+  <div class="row">
+
+    <!-- Barra lateral: col-12 en xs, col-sm-2, col-md-4 -->
+    <aside class="col-12 col-sm-2 col-md-4">
+      <h2>Especialidades</h2>
+      <ul class="list-group mb-3">
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('terapia')" style="cursor:pointer">Terapia Neural</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('quiropraxia')" style="cursor:pointer">Quiropraxia</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('fisioterapia')" style="cursor:pointer">Fisioterapia</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('nutricion')" style="cursor:pointer">Nutrición y Dietética</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('cardiologia')" style="cursor:pointer">Cardiología</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('neurologia')" style="cursor:pointer">Neurología</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('pediatria')" style="cursor:pointer">Pediatría</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('psicologia')" style="cursor:pointer">Psicología</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('traumatologia')" style="cursor:pointer">Traumatología</li>
+        <li class="list-group-item list-group-item-action" (click)="mostrarEspecialidad('oftalmologia')" style="cursor:pointer">Oftalmología</li>
+      </ul>
+      
+      <!-- Descripción dinámica de especialidad -->
+      <div *ngIf="descripcionVisible" class="alert alert-info d-none">{{ descripcionTexto }}</div>
+    </aside>
+
+    <!-- Sección médicos: col-12 en xs, col-sm-10, col-md-8 -->
+    <main class="col-12 col-sm-10 col-md-8">
+      <h2>Doctores Destacados</h2>
+      <div class="row g-3">
+
+        <!-- Cada carta: col-6 pequeño, col-4 mediano, col-3 grande -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctora1.png" class="card-img-top img-fluid" alt="Dra. Cambelly Anthonia">
+            <div class="card-body">
+              <h5 class="card-title">Dra. Cambelly Anthonia</h5>
+              <p class="card-text text-muted">Cardiología</p>
+              <p class="card-text"><small>Sub-esp: Cardiología Intervencionista</small></p>
+              <p class="card-text fst-italic">"Tu corazón es mi prioridad."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctor2.png" class="card-img-top img-fluid" alt="Dr. Joe McLister">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Joe McLister</h5>
+              <p class="card-text text-muted">Neurología</p>
+              <p class="card-text"><small>Sub-esp: Neurología Clínica</small></p>
+              <p class="card-text fst-italic">"La mente sana mueve el mundo."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctor3.png" class="card-img-top img-fluid" alt="Dr. Eddie Vembar">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Eddie Vembar</h5>
+              <p class="card-text text-muted">Oftalmología</p>
+              <p class="card-text"><small>Sub-esp: Cirugía Refractiva</small></p>
+              <p class="card-text fst-italic">"Ver bien es vivir mejor."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctora4.png" class="card-img-top img-fluid" alt="Dra. Talia Wender">
+            <div class="card-body">
+              <h5 class="card-title">Dra. Talia Wender</h5>
+              <p class="card-text text-muted">Traumatología</p>
+              <p class="card-text"><small>Sub-esp: Ortopedia Deportiva</small></p>
+              <p class="card-text fst-italic">"Recupera tu movimiento."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctora5.png" class="card-img-top img-fluid" alt="Dra. Itzel Manguir">
+            <div class="card-body">
+              <h5 class="card-title">Dra. Itzel Manguir</h5>
+              <p class="card-text text-muted">Pediatría</p>
+              <p class="card-text"><small>Sub-esp: Neonatología</small></p>
+              <p class="card-text fst-italic">"Cada niño merece lo mejor."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctor6.png" class="card-img-top img-fluid" alt="Dr. John Smith">
+            <div class="card-body">
+              <h5 class="card-title">Dr. John Smith</h5>
+              <p class="card-text text-muted">Fisioterapia</p>
+              <p class="card-text"><small>Sub-esp: Fisioterapia Deportiva</small></p>
+              <p class="card-text fst-italic">"Comprometido con tu recuperación."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctor7.png" class="card-img-top img-fluid" alt="Dr. Gael Merk">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Gael Merk</h5>
+              <p class="card-text text-muted">Nutrición</p>
+              <p class="card-text"><small>Sub-esp: Dietética Terapéutica</small></p>
+              <p class="card-text fst-italic">"Un alimento sano alarga la vida."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctora8.png" class="card-img-top img-fluid" alt="Dra. Alli Samthara">
+            <div class="card-body">
+              <h5 class="card-title">Dra. Alli Samthara</h5>
+              <p class="card-text text-muted">Psicología</p>
+              <p class="card-text"><small>Sub-esp: Terapia Cognitivo-Conductual</small></p>
+              <p class="card-text fst-italic">"La salud mental importa."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctor9.png" class="card-img-top img-fluid" alt="Dr. Ronny Trhankers">
+            <div class="card-body">
+              <h5 class="card-title">Dr. Ronny Trhankers</h5>
+              <p class="card-text text-muted">Oftalmología</p>
+              <p class="card-text"><small>Sub-esp: Cirugía</small></p>
+              <p class="card-text fst-italic">"Ojos sanos, vida saludable."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 border">
+            <img src="imgs/Doctora10.png" class="card-img-top img-fluid" alt="Dra. Alli Samthara">
+            <div class="card-body">
+              <h5 class="card-title">Dra. Alli Samthara</h5>
+              <p class="card-text text-muted">Traumatología</p>
+              <p class="card-text"><small>Sub-esp: Terapia Física</small></p>
+              <p class="card-text fst-italic">"Primero tu, y luego el mundo."</p>
+              <a href="#agendamientoCitas" class="btn btn-primary btn-sm w-100">Agendar Cita</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>

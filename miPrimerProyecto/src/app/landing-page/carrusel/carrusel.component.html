@@ -1,1 +1,35 @@
-<p>carrusel works!</p>
+<!-- SECCIÓN 1: Carrusel de promociones -->
+<div class="carrusel-container" id="promociones">
+  <!-- Slide actual -->
+  <div class="carrusel-wrapper">
+    <img [src]="slides[currentSlideIndex].image"
+         class="carrusel-image"
+         [alt]="slides[currentSlideIndex].title">
+    <div class="carrusel-caption">
+      <h5>{{ slides[currentSlideIndex].title }}</h5>
+      <p>{{ slides[currentSlideIndex].description }}</p>
+    </div>
+  </div>
+
+  <!-- Indicadores -->
+  <div class="carrusel-indicators">
+    <button *ngFor="let slide of slides; let i = index"
+            (click)="goToSlide(i)"
+            [class.active]="i === currentSlideIndex"
+            class="indicator-btn"
+            [attr.aria-label]="'Ir a slide ' + (i + 1)">
+    </button>
+  </div>
+
+  <!-- Botones de navegación -->
+  <button class="carrusel-control carrusel-control-prev"
+          (click)="previousSlide()"
+          aria-label="Slide anterior">
+    ❮
+  </button>
+  <button class="carrusel-control carrusel-control-next"
+          (click)="nextSlide()"
+          aria-label="Siguiente slide">
+    ❯
+  </button>
+</div>

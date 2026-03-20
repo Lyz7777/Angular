@@ -1,1 +1,91 @@
-<p>formulario works!</p>
+
+<div class="formulario-container" id="agendamientoCitas">
+  <h1>Agendamiento Citas</h1>
+  <h2 class="form-subtitle">Formulario para el agendamiento de una cita</h2>
+  <p class="form-intro">
+    A continuación se presenta el formulario para agendar una cita médica.
+  </p>
+
+  <form id="formularioCita" (ngSubmit)="validarFormulario()" novalidate>
+
+  <div class="form-group">
+    <label for="identificacion" class="form-label">Tipo de Identificación:</label>
+    <select id="identificacion" name="tipoIdentificacion" class="form-select"
+      [(ngModel)]="tipoIdentificacion">
+      <option value="" disabled>Seleccione un tipo de identificación</option>
+      <option value="cc">Cédula de Ciudadanía</option>
+      <option value="ti">Tarjeta de Identidad</option>
+      <option value="ce">Cédula de Extranjería</option>
+      <option value="pas">Pasaporte</option>
+    </select>
+    <span class="error-message">{{ errores['tipoIdentificacion'] }}</span>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Número de Identificación:</label>
+    <input type="text" name="numeroIdentificacion" class="form-control"
+      placeholder="Número de identificación"
+      [(ngModel)]="numeroIdentificacion"
+      (blur)="validarCampo('numeroIdentificacion')">
+    <span class="error-message">{{ errores['numeroIdentificacion'] }}</span>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Nombres:</label>
+    <input type="text" name="nombres" class="form-control"
+      placeholder="Nombres del usuario"
+      [(ngModel)]="nombres"
+      (blur)="validarCampo('nombres')">
+    <span class="error-message">{{ errores['nombres'] }}</span>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Apellidos:</label>
+    <input type="text" name="apellidos" class="form-control"
+      placeholder="Apellidos del usuario"
+      [(ngModel)]="apellidos"
+      (blur)="validarCampo('apellidos')">
+    <span class="error-message">{{ errores['apellidos'] }}</span>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Correo Electrónico:</label>
+    <input type="email" name="correo" class="form-control"
+      placeholder="correo@ejemplo.com"
+      [(ngModel)]="correo"
+      (blur)="validarCampo('correo')">
+    <span class="error-message">{{ errores['correo'] }}</span>
+  </div>
+
+  <fieldset class="form-group">
+    <legend class="form-label">Género:</legend>
+    <div class="radio-group">
+      <div class="radio-item">
+        <input type="radio" id="femenino" name="genero" value="femenino" [(ngModel)]="genero">
+        <label for="femenino">Femenino</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="masculino" name="genero" value="masculino" [(ngModel)]="genero">
+        <label for="masculino">Masculino</label>
+      </div>
+      <div class="radio-item">
+        <input type="radio" id="otro" name="genero" value="otro" [(ngModel)]="genero">
+        <label for="otro">Otro</label>
+      </div>
+    </div>
+    <span class="error-message">{{ errores['genero'] }}</span>
+  </fieldset>
+
+  <div class="form-group">
+    <label class="form-label">Fecha de Nacimiento:</label>
+    <input type="date" name="fechaNacimiento" class="form-control"
+      [(ngModel)]="fechaNacimiento">
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-primary">Registrar</button>
+  </div>
+
+</form>
+</div>
+

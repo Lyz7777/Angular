@@ -1,0 +1,105 @@
+
+#agendamientoCitas {
+  background: linear-gradient(160deg, #f5f0ff 0%, #e8f9fd 100%);
+  padding: 3rem 2rem;
+}
+
+#agendamientoCitas h1 {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #00B6DC, #AB48FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.2rem;
+}
+
+#agendamientoCitas h2 {
+  font-family: 'Nunito', sans-serif;
+  color: #5a4080;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+#agendamientoCitas .lead {
+  font-family: 'Nunito', sans-serif;
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1.8rem;
+}
+
+/* Tarjeta que envuelve el formulario */
+#formularioCita {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(171, 72, 255, 0.1);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Labels */
+#agendamientoCitas .form-label,
+#agendamientoCitas legend {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: #4a3070;
+  font-size: 0.9rem;
+}
+
+/* Inputs y selects */
+#agendamientoCitas .form-control,
+#agendamientoCitas .form-select {
+  border: 1.5px solid #d8c8f5;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.55rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fdfbff;
+}
+
+#agendamientoCitas .form-control:focus,
+#agendamientoCitas .form-select:focus {
+  border-color: #AB48FF;
+  box-shadow: 0 0 0 3px rgba(171, 72, 255, 0.12);
+  outline: none;
+  background: white;
+}
+
+/* Radio buttons */
+#agendamientoCitas .form-check-input:checked {
+  background-color: #AB48FF;
+  border-color: #AB48FF;
+}
+
+#agendamientoCitas .form-check-label {
+  font-family: 'Nunito', sans-serif;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Mensajes de error */
+#agendamientoCitas .text-danger {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+}
+
+/* Botón registrar */
+#btnRegistrar {
+  background: linear-gradient(135deg, #00B6DC, #AB48FF);
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 2.5rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(171, 72, 255, 0.3);
+}
+
+#btnRegistrar:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(171, 72, 255, 0.4);
+}
