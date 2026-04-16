@@ -1,10 +1,12 @@
 package co.edu.unicauca.distribuidos.core.fachadaServices.services;
 
 import java.sql.Time;
+import java.util.Collection;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -34,6 +36,62 @@ public class MedicoServiceImpl implements IMedicoService {
     public MedicoServiceImpl(MedicoFranjaRepository medicoFranjaRepository, ModelMapper modelMapper) {
         this.medicoFranjaRepository = medicoFranjaRepository;
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public List<MedicoDTORespuesta> findAll() {
+        List<MedicoDTORespuesta> listaRetornar;
+        Optional<Collection<MedicoEntity>> medicosEntityOpt = this.medicoFranjaRepository.buscarTodosMedicos();
+
+        if (medicosEntityOpt.isEmpty()) {
+            listaRetornar = List.of();
+        } else {
+            Collection<MedicoEntity> medicosEntity = medicosEntityOpt.get();
+            listaRetornar = this.modelMapper.map(medicosEntity, new TypeToken<List<MedicoDTORespuesta>>() {
+            }.getType());
+        }
+
+        return listaRetornar;
+    }
+
+    @Override
+    public MedicoDTORespuesta findById(Integer id) {
+        MedicoDTORespuesta medicoRetornar = null;
+        Optional<MedicoEntity> optionalMedico = this.medicoFranjaRepository.buscarMedicoPorId(id);
+        if (optionalMedico.isPresent()) {
+            MedicoEntity medicoEntity = optionalMedico.get();
+            medicoRetornar = this.modelMapper.map(medicoEntity, MedicoDTORespuesta.class);
+        }
+
+        return medicoRetornar;
+    }
+
+    @Override
+    public MedicoDTORespuesta save(MedicoDTOPeticion medico) {
+        return registrarMedico(medico);
+    }
+
+    @Override
+    public MedicoDTORespuesta update(Integer id, MedicoDTOPeticion medico) {
+        MedicoEntity medicoActualizado = null;
+        Optional<MedicoEntity> medicoEntityOp = this.medicoFranjaRepository.buscarMedicoPorId(id);
+
+        if (medicoEntityOp.isPresent()) {
+            MedicoEntity objMedicoDatosNuevos = medicoEntityOp.get();
+            objMedicoDatosNuevos.setNombre(medico.getNombre());
+            objMedicoDatosNuevos.setApellido(medico.getApellido());
+            objMedicoDatosNuevos.setEmail(medico.getEmail());
+
+            Optional<MedicoEntity> optionalMedico = this.medicoFranjaRepository.actualizarMedico(id, objMedicoDatosNuevos);
+            medicoActualizado = optionalMedico.orElse(null);
+        }
+
+        return medicoActualizado == null ? null : this.modelMapper.map(medicoActualizado, MedicoDTORespuesta.class);
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        return this.medicoFranjaRepository.eliminarMedico(id);
     }
 
     @Override

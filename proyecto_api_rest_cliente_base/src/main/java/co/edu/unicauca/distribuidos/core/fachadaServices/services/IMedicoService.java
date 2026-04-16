@@ -10,6 +10,16 @@ import co.edu.unicauca.distribuidos.core.fachadaServices.DTO.MedicoDTORespuesta;
 
 public interface IMedicoService {
 
+    List<MedicoDTORespuesta> findAll();
+
+    MedicoDTORespuesta findById(Integer id);
+
+    MedicoDTORespuesta save(MedicoDTOPeticion medico);
+
+    MedicoDTORespuesta update(Integer id, MedicoDTOPeticion medico);
+
+    boolean delete(Integer id);
+
     MedicoDTORespuesta registrarMedico(MedicoDTOPeticion medico);
 
     FranjaDTORespuesta registrarFranja(Integer idMedico, FranjaDTOPeticion franja);

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -82,6 +83,84 @@ public class MedicoFranjaRepository {
         }
 
         return medico == null ? Optional.empty() : Optional.of(medico);
+    }
+
+    public Optional<Collection<MedicoEntity>> buscarTodosMedicos() {
+        Collection<MedicoEntity> medicos = new LinkedList<>();
+
+        try {
+            conexionABaseDeDatos.conectar();
+            String consulta = "select * from medicos";
+            PreparedStatement sentencia = conexionABaseDeDatos.getConnection().prepareStatement(consulta);
+            ResultSet res = sentencia.executeQuery();
+
+            while (res.next()) {
+                MedicoEntity medico = new MedicoEntity();
+                medico.setId(res.getInt("id"));
+                medico.setNombre(res.getString("nombre"));
+                medico.setApellido(res.getString("apellido"));
+                medico.setEmail(res.getString("email"));
+                medico.setEstado(res.getBoolean("estado"));
+                medicos.add(medico);
+            }
+
+            res.close();
+            sentencia.close();
+        } catch (SQLException e) {
+            System.out.println("error listando medicos: " + e.getMessage());
+        } finally {
+            conexionABaseDeDatos.desconectar();
+        }
+
+        return medicos.isEmpty() ? Optional.empty() : Optional.of(medicos);
+    }
+
+    public Optional<MedicoEntity> actualizarMedico(Integer idMedico, MedicoEntity medico) {
+        MedicoEntity medicoActualizado = null;
+        int resultado = -1;
+
+        try {
+            conexionABaseDeDatos.conectar();
+            String consulta = "update medicos set nombre=?, apellido=?, email=?, estado=? where id=?";
+            PreparedStatement sentencia = conexionABaseDeDatos.getConnection().prepareStatement(consulta);
+            sentencia.setString(1, medico.getNombre());
+            sentencia.setString(2, medico.getApellido());
+            sentencia.setString(3, medico.getEmail());
+            sentencia.setBoolean(4, medico.getEstado());
+            sentencia.setInt(5, idMedico);
+
+            resultado = sentencia.executeUpdate();
+            sentencia.close();
+        } catch (SQLException e) {
+            System.out.println("error actualizando medico: " + e.getMessage());
+        } finally {
+            conexionABaseDeDatos.desconectar();
+        }
+
+        if (resultado == 1) {
+            medicoActualizado = this.buscarMedicoPorId(idMedico).orElse(null);
+        }
+
+        return medicoActualizado == null ? Optional.empty() : Optional.of(medicoActualizado);
+    }
+
+    public boolean eliminarMedico(Integer idMedico) {
+        int resultado = -1;
+
+        try {
+            conexionABaseDeDatos.conectar();
+            String consulta = "delete from medicos where id=?";
+            PreparedStatement sentencia = conexionABaseDeDatos.getConnection().prepareStatement(consulta);
+            sentencia.setInt(1, idMedico);
+            resultado = sentencia.executeUpdate();
+            sentencia.close();
+        } catch (SQLException e) {
+            System.out.println("error eliminando medico: " + e.getMessage());
+        } finally {
+            conexionABaseDeDatos.desconectar();
+        }
+
+        return resultado == 1;
     }
 
     public FranjaEntity guardarFranja(FranjaEntity franja) {
