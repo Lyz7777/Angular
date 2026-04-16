@@ -1,1 +1,62 @@
-<p>form works!</p>
+<ul class="nav nav-tabs bg-dark border-0">
+  <li class="nav-item">
+    <a class="nav-link bg-dark text-light border-0" style="font-size: 0.8rem;">
+      {{ cliente.id ? 'Actualizar cliente' : 'Crear cliente' }}
+    </a>
+  </li>
+</ul>
+
+<div class="card bg-dark text-white rounded-0 border-0 mb-5">
+  <div class="card-header border-0 text-center">
+    <h4 class="text-warning"><b>{{ titulo }}</b></h4>
+  </div>
+  <div class="card-body">
+
+    <form (ngSubmit)="cliente.id ? update() : create()">
+      <div class="form-group row mb-3">
+        <label for="nombre" class="col-sm-2 col-form-label" style="font-size: 0.9rem;">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label for="apellido" class="col-sm-2 col-form-label" style="font-size: 0.9rem;">Apellido</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" required>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label for="email" class="col-sm-2 col-form-label" style="font-size: 0.9rem;">Email</label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control" [(ngModel)]="cliente.email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form-group row mb-3">
+        <label for="categoria" class="col-sm-2 col-form-label" style="font-size: 0.9rem;">Categoria</label>
+        <div class="col-sm-6">
+          <select
+            class="form-control"
+            [(ngModel)]="cliente.objCategoria.id"
+            name="categoria"
+            required>
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">
+              {{ categoria.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary btn-sm" role="button" type="submit">
+            {{ cliente.id ? 'Actualizar' : 'Crear' }}
+          </button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="card border-info mb-3 mt-3">
+  <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+    <span>Franjas de medico</span>
+    <a class="btn btn-sm btn-light" routerLink="/medicos">Volver</a>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-info" *ngIf="medico">
+      {{ medico.nombre }} {{ medico.apellido }}
+    </h5>
+
+    <div class="row g-3 align-items-end mb-3">
+      <div class="col-md-3">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-control" [(ngModel)]="fechaConsulta">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-info" type="button" (click)="cargarFranjas()">Consultar</button>
+      </div>
+    </div>
+
+    <div class="row g-3 align-items-end mb-4">
+      <div class="col-md-3">
+        <label class="form-label">Hora inicio</label>
+        <input type="time" class="form-control" [(ngModel)]="nuevaFranja.horaInicio" step="1800">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Hora fin</label>
+        <input type="time" class="form-control" [(ngModel)]="nuevaFranja.horaFin" step="1800">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Estado</label>
+        <select class="form-control" [(ngModel)]="nuevaFranja.estado">
+          <option value="DISPONIBLE">DISPONIBLE</option>
+          <option value="NO_DISPONIBLE">NO_DISPONIBLE</option>
+          <option value="OCUPADA">OCUPADA</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-info text-white" type="button" (click)="guardarFranja()">
+          Agregar franja
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="franjas.length == 0" class="alert alert-secondary">
+      No hay franjas para la fecha seleccionada.
+    </div>
+
+    <table class="table table-bordered" *ngIf="franjas.length > 0">
+      <thead>
+        <tr>
+          <th>Hora inicio</th>
+          <th>Hora fin</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let franja of franjas">
+          <td>{{ franja.horaInicio }}</td>
+          <td>{{ franja.horaFin }}</td>
+          <td>{{ franja.fecha }}</td>
+          <td>{{ franja.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
