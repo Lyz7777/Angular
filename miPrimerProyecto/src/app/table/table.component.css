@@ -1,0 +1,67 @@
+:host {
+	--table-accent: #3085d6;
+	--btn-editar: #00c2ff;
+	--btn-eliminar: #7b4bff;
+}
+
+.table-section .create-btn {
+	background-color: var(--table-accent);
+	border-color: var(--table-accent);
+	color: #fff;
+}
+
+.table-section .create-btn:hover {
+	background-color: #2573bb;
+	border-color: #2573bb;
+}
+
+.clientes-card {
+	border: 1px solid var(--table-accent);
+}
+
+.clientes-header {
+	background-color: var(--table-accent);
+	color: #fff;
+	font-weight: 600;
+}
+
+.clientes-title {
+	color: var(--table-accent);
+}
+
+.clientes-table {
+	border-color: var(--table-accent);
+}
+
+.clientes-table thead th {
+	background-color: var(--table-accent);
+	color: #fff;
+	border-color: var(--table-accent);
+}
+
+.clientes-table td,
+.clientes-table th {
+	border-color: rgba(48, 133, 214, 0.45);
+}
+
+.btn-editar {
+	background-color: var(--btn-editar) !important;
+	border-color: var(--btn-editar) !important;
+	color: #fff !important;
+}
+
+.btn-editar:hover {
+	background-color: #00a9df !important;
+	border-color: #00a9df !important;
+}
+
+.btn-eliminar {
+	background-color: var(--btn-eliminar) !important;
+	border-color: var(--btn-eliminar) !important;
+	color: #fff !important;
+}
+
+.btn-eliminar:hover {
+	background-color: #643ccf !important;
+	border-color: #643ccf !important;
+}

@@ -1,19 +1,19 @@
-<div class="my-2 text-left d-flex gap-2">
-  <button class="btn btn-primary" type="button" routerLink="/medicos/form">
+<div class="my-2 text-left d-flex gap-2 table-section">
+  <button class="btn create-btn" type="button" routerLink="/medicos/form">
     Crear Medico
   </button>
 </div>
 
-<div class="card border-success mb-3 mt-3">
-  <div class="card-header bg-success text-white">Medicos</div>
+<div class="card mb-3 mt-3 medicos-card">
+  <div class="card-header medicos-header">Medicos</div>
   <div class="card-body">
-    <h5 class="card-title text-success">Listado de medicos</h5>
+    <h5 class="card-title medicos-title">Listado de medicos</h5>
 
     <div *ngIf="medicos.length == 0" class="alert alert-info">
       No hay medicos registrados.
     </div>
 
-    <table class="table table-bordered table-striped" *ngIf="medicos.length > 0">
+    <table class="table table-bordered table-striped medicos-table" *ngIf="medicos.length > 0">
       <thead>
         <tr>
           <th>Id</th>
@@ -32,13 +32,13 @@
           <td>{{ medico.email }}</td>
           <td>{{ medico.estado ? 'Activo' : 'Inactivo' }}</td>
           <td>
-            <button type="button" class="btn btn-warning btn-sm me-2" [routerLink]="['/medicos/form', medico.id]">
+            <button type="button" class="btn btn-sm me-2 btn-editar" [routerLink]="['/medicos/form', medico.id]">
               Editar
             </button>
-            <button type="button" class="btn btn-info btn-sm me-2" [routerLink]="['/medicos', medico.id, 'franjas']">
+            <button type="button" class="btn btn-sm me-2 btn-franjas" [routerLink]="['/medicos', medico.id, 'franjas']">
               Franjas
             </button>
-            <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(medico)">
+            <button type="button" class="btn btn-sm btn-eliminar" (click)="eliminar(medico)">
               Eliminar
             </button>
           </td>
