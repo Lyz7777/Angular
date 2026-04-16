@@ -1,0 +1,51 @@
+<div class="formulario-container" id="agendamientoCitas">
+  <h1>Agendamiento Citas</h1>
+  <h2 class="form-subtitle">Formulario para el agendamiento de una cita</h2>
+  <p class="form-intro">
+    A continuación se presenta el formulario para agendar una cita médica.
+  </p>
+
+  <form id="formularioCita" (ngSubmit)="validarFormulario()" novalidate>
+
+  <div class="form-group">
+    <label class="form-label">id</label>
+    <input type="text" name="id" class="form-control"
+      placeholder="id"
+     [(ngModel)]="id"
+      (blur)="validarCampo('id')">
+    <span class="error-message">{{ errores['id'] }}</span>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Nombres:</label>
+    <input type="text" name="nombres" class="form-control"
+      placeholder="Nombres del usuario"
+      [(ngModel)]="nombres"
+      (blur)="validarCampo('nombres')">
+    <span class="error-message">{{ errores['nombres'] }}</span>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Apellidos:</label>
+    <input type="text" name="apellidos" class="form-control"
+      placeholder="Apellidos del usuario"
+      [(ngModel)]="apellidos"
+      (blur)="validarCampo('apellidos')">
+    <span class="error-message">{{ errores['apellidos'] }}</span>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Correo Electrónico:</label>
+    <input type="email" name="correo" class="form-control"
+      placeholder="correo@ejemplo.com"
+      [(ngModel)]="correo"
+      (blur)="validarCampo('correo')">
+    <span class="error-message">{{ errores['correo'] }}</span>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-primary">Registrar</button>
+  </div>
+
+</form>
+</div>

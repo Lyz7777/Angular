@@ -1,1 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --primary: #00c2ff; /* azul */
+  --accent: #7b4bff;  /* morado */
+  --card-radius: 14px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* fondo en degradado sutil parecido a la captura */
+  background: radial-gradient(circle at 10% 10%, #f6fbff 0%, #eef8ff 30%, #f7f8ff 100%);
+}
+
+/* Encabezados */
+h1, h2, h3 {
+  color: var(--primary);
+  margin: 0 0 12px 0;
+}
+
+/* Contenedor principal con padding similar */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px 24px;
+}
+
+/* Tarjetas (doctores, formulario) */
+.card {
+  border: 0;
+  border-radius: var(--card-radius);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(120,100,180,0.06), 0 3px 8px rgba(0,0,0,0.03);
+}
+
+.card img {
+  display: block;
+  margin: 18px auto 0 auto;
+  max-height: 170px;
+  object-fit: contain;
+}
+
+/* Lista de especialidades (usa clases de bootstrap list-group) */
+.list-group-item {
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 0;
+  background: #fff;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.03);
+}
+
+/* Botón con degradado */
+.btn-gradient {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 28px;
+  padding: 8px 22px;
+  font-weight: 600;
+  box-shadow: 0 8px 22px rgba(123,75,255,0.16);
+}
+
+.btn-gradient:active, .btn-gradient:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(123,75,255,0.12);
+}
+
+/* Formulario central */
+.form-card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 16px;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid rgba(123,75,255,0.12);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #6b6b7a;
+}
+
+/* Footer con degradado */
+.footer-gradient {
+  background: linear-gradient(90deg, #00c2ff 0%, #7b4bff 100%);
+}
+
+/* Ajustes responsivos y utilidades */
+.section-padding {
+  padding: 48px 0;
+}
+
+.doctor-card {
+  border-radius: 16px;
+  padding: 18px;
+}
+
+/* pequeñas mejoras visuales */
+a { color: inherit; }
+
+/* placeholder helper para centrar el formulario en pantallas grandes como la captura */
+.center-vertical {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 220px);
+}
